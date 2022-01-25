@@ -32,11 +32,18 @@
               <a class="nav-link" href="#">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link {{ register }}" href="{{ url_for('register_page') }}">Register</a>
             </li>
           </ul>
         </div>
       </nav>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
       <!-- Future Content here -->
       {% block content %}
       {% endblock %}
