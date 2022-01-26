@@ -1,5 +1,7 @@
+import bcrypt
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 from market.config import settings
 
@@ -10,5 +12,7 @@ app.config[
 app.config['SECRET_KEY'] = '278eb7681edbcd614fc60a3e'
 
 db = SQLAlchemy(app)
+
+bcrypt = Bcrypt(app)
 
 from market import routes
