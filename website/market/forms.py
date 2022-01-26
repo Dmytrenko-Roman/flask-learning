@@ -1,8 +1,8 @@
+from typing import NoReturn
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
-
-from typing import NoReturn
 
 from market.models import User
 
