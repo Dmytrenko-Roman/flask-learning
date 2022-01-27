@@ -32,7 +32,7 @@ def market_page() -> str:
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def register_page():
+def register_page() -> str:
     form = RegisterForm()
 
     values = {
@@ -63,7 +63,7 @@ def register_page():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login_page():
+def login_page() -> str:
     form = LoginForm()
 
     values = {
