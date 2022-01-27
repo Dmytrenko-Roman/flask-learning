@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash, get_flashed_messages
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from market import app, db
 from market.models import Item, User
@@ -19,6 +19,7 @@ def home_page() -> str:
 
 
 @app.route('/market')
+@login_required
 def market_page() -> str:
     values = {
         'home': '',
@@ -52,6 +53,10 @@ def register_page() -> str:
 
         db.session.add(user_to_create)
         db.session.commit()
+
+
+        login_user(user_to_create)
+        flash(f'Account created successfully! You are now loggen in as: {user_to_create.username}', category='success')
 
         return redirect(url_for('market_page'))
 
